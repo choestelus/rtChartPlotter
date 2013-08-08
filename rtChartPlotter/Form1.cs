@@ -176,11 +176,13 @@ namespace rtChartPlotter
             chart1.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 100);
             chart1.ChartAreas["ChartArea2"].AxisX.ScaleView.Zoom(0, 100);
             chart1.ChartAreas["ChartArea3"].AxisX.ScaleView.Zoom(0, 100);
+            chart2.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoom(0, 100);
             if (pointIndex >= 100)
             {
                 chart1.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
                 chart1.ChartAreas["ChartArea2"].AxisX.ScaleView.ZoomReset();
                 chart1.ChartAreas["ChartArea3"].AxisX.ScaleView.ZoomReset();
+                chart2.ChartAreas["ChartArea1"].AxisX.ScaleView.ZoomReset();
             }
             if (pointIndex > 0)
             {
@@ -214,24 +216,6 @@ namespace rtChartPlotter
                 chart1.ChartAreas["ChartArea1"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
                 chart1.ChartAreas["ChartArea1"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
             }*/
-            if (pointIndex >= 100)
-            {
-                chart1.ChartAreas["ChartArea1"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
-                chart1.ChartAreas["ChartArea1"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
-                chart1.ChartAreas["ChartArea2"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
-                chart1.ChartAreas["ChartArea2"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
-                chart1.ChartAreas["ChartArea3"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
-                chart1.ChartAreas["ChartArea3"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
-            }
-            else
-            {
-                chart1.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
-                chart1.ChartAreas["ChartArea1"].AxisX.Maximum = numberOfPointsInChart;
-                chart1.ChartAreas["ChartArea2"].AxisX.Minimum = 0;
-                chart1.ChartAreas["ChartArea2"].AxisX.Maximum = numberOfPointsInChart;
-                chart1.ChartAreas["ChartArea3"].AxisX.Minimum = 0;
-                chart1.ChartAreas["ChartArea3"].AxisX.Maximum = numberOfPointsInChart;
-            }
             /*while (chart1.Series[3].Points.Count > numberOfPointsInChart)
             {
                 // Remove data points on the left side
@@ -258,7 +242,29 @@ namespace rtChartPlotter
             chart2.Series[5].Points.AddXY(DateTime.Now.ToLongTimeString(), devicesPacketLengthR[2]);
             chart2.Series[6].Points.AddXY(DateTime.Now.ToLongTimeString(), devicesPacketLengthS[3]);
             chart2.Series[7].Points.AddXY(DateTime.Now.ToLongTimeString(), devicesPacketLengthR[3]);
-             */ 
+             */
+            if (pointIndex >= 100)
+            {
+                chart1.ChartAreas["ChartArea1"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
+                chart1.ChartAreas["ChartArea1"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
+                chart1.ChartAreas["ChartArea2"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
+                chart1.ChartAreas["ChartArea2"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
+                chart1.ChartAreas["ChartArea3"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
+                chart1.ChartAreas["ChartArea3"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
+                chart2.ChartAreas["ChartArea1"].AxisX.Minimum = pointIndex - numberOfPointsAfterRemoval;
+                chart2.ChartAreas["ChartArea1"].AxisX.Maximum = chart1.ChartAreas["ChartArea1"].AxisX.Minimum + numberOfPointsInChart;
+            }
+            else
+            {
+                chart1.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
+                chart1.ChartAreas["ChartArea1"].AxisX.Maximum = numberOfPointsInChart;
+                chart1.ChartAreas["ChartArea2"].AxisX.Minimum = 0;
+                chart1.ChartAreas["ChartArea2"].AxisX.Maximum = numberOfPointsInChart;
+                chart1.ChartAreas["ChartArea3"].AxisX.Minimum = 0;
+                chart1.ChartAreas["ChartArea3"].AxisX.Maximum = numberOfPointsInChart;
+                chart2.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
+                chart2.ChartAreas["ChartArea1"].AxisX.Maximum = numberOfPointsInChart;
+            }
             for (int i = 0; i < 4; i++)
             {
                 devicesPacketLengthS[i] = 0;
